@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Home Tuition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        .menu-icon { display: none; cursor: pointer; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; text-align: center; }
+            .menu-icon { display: block; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 text-white flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-3">
+            <img src="{% static 'images/excelhm.jpg' %}" alt="Logo" class="w-12 h-12 rounded-full">
+            <h1 class="text-xl font-bold">Excel Home Tuition</h1>
+        </div>
+        <div class="menu-icon text-2xl" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links flex space-x-6">
+            <li><a href="{% url 'home' %}" class="hover:text-white">Home</a></li>
+            <li><a href="{% url 'about' %}" class="hover:text-white">About</a></li>
+            <li><a href="{% url 'contact' %}" class="hover:text-white">Contact</a></li>
+            <li><a href="{% url 'feedback' %}" class="hover:text-white">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+<section class="text-center py-4 bg-gray-200 text-gray-800">
+    <h2 class="text-2xl font-semibold">We provide tutors & tuitions all over NCR</h2>
+</section>
+
+<section class="relative w-full h-screen bg-cover bg-center flex flex-col items-center justify-center text-center" style="background-image: url('{% static "images/hero-bg.jpg" %}')">
+    <div class="bg-black bg-opacity-50 p-10 rounded-lg">
+        <h2 class="text-4xl font-bold text-white">Find the Best Tutors for Your Learning</h2>
+        <p class="mt-2 text-gray-200">Register as a teacher or submit your query today!</p>
+        <a href="#student-query" class="mt-4 inline-block bg-yellow-400 text-blue-900 px-6 py-3 rounded-lg font-bold hover:bg-yellow-500">Get Started</a>
+    </div>
+</section>
+
+
+
+<!-- Forms -->
+<div class="flex flex-wrap justify-center mt-10 space-x-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 w-full max-w-6xl">
+        <!-- Student Query Form -->
+        <div id="student-query" class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl transition-all hover:scale-105 hover:shadow-3xl">
+            <h2 class="text-2xl font-bold mb-3 text-center text-purple-700">Student Query</h2>
+            <form action="{% url 'home' %}" method="POST" class="space-y-4">
+                {% csrf_token %}
+                <label class="block font-semibold">Your Name</label>
+                <input type="text" name="name" class="input-field" required>
+
+                <label class="block font-semibold">Your Email</label>
+                <input type="email" name="email" class="input-field" required>
+
+                <label class="block font-semibold">Your Phone</label>
+                <input type="text" name="phone" class="input-field" required>
+
+                <label class="block font-semibold">Your Address</label>
+                <input type="text" name="address" class="input-field" required>
+
+                <label class="block font-semibold">Your Query</label>
+                <textarea name="query" class="input-field h-24" required></textarea>
+
+                <button type="submit" name="student_submit" class="btn bg-purple-600 text-white px-5 py-2 rounded-lg shadow-lg hover:bg-purple-700 hover:scale-105 hover:shadow-xl transition-all">Submit</button>
+            </form>
+        </div>
+
+        <!-- Teacher Registration Form -->
+        <div class="bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-2xl transition-all hover:scale-105 hover:shadow-3xl">
+            <h2 class="text-2xl font-bold mb-3 text-center text-green-700">Register as a Teacher</h2>
+            <form action="{% url 'home' %}" method="POST" class="space-y-4">
+                {% csrf_token %}
+                <label class="block font-semibold">Full Name</label>
+                <input type="text" name="name" class="input-field" required>
+
+                <label class="block font-semibold">Email</label>
+                <input type="email" name="email" class="input-field" required>
+
+                <label class="block font-semibold">Phone</label>
+                <input type="text" name="phone" class="input-field" required>
+
+                <label class="block font-semibold">Your Address</label>
+                <input type="text" name="address" class="input-field" required>
+
+                <label class="block font-semibold">Subjects You Teach</label>
+                <input type="text" name="subject" class="input-field" required>
+
+                <label class="block font-semibold">Experience (Years)</label>
+                <input type="text" name="experience" class="input-field" required>
+
+                <label class="block font-semibold">Short Bio</label>
+                <textarea name="bio" class="input-field h-24" required></textarea>
+
+                <button type="submit" name="teacher_submit" class="btn bg-green-600 text-white px-5 py-2 rounded-lg shadow-lg hover:bg-green-700 hover:scale-105 hover:shadow-xl transition-all">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        transition: all 0.3s;
+    }
+
+    .input-field:focus {
+        border-color: #6b46c1;
+        outline: none;
+        box-shadow: 0 0 8px rgba(107, 70, 193, 0.5);
+    }
+
+    @media (max-width: 768px) {
+        .grid {
+            grid-template-columns: 1fr; /* Stack forms on small screens */
+        }
+    }
+</style>
+
+
+
+
+
+    <!-- About Section -->
+    <section class="container mx-auto my-10 p-6">
+        <h2 class="text-3xl font-bold text-center">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 text-center">
+            <div class="p-4 bg-white rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold">Experienced Tutors</h3>
+                <p class="text-gray-600">Our tutors are highly qualified and experienced in their respective subjects.</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold">Personalized Learning</h3>
+                <p class="text-gray-600">We provide customized lessons tailored to each student's needs.</p>
+            </div>
+            <div class="p-4 bg-white rounded-lg shadow-lg">
+                <h3 class="text-xl font-bold">Affordable Pricing</h3>
+                <p class="text-gray-600">Quality education at an affordable price to help every student succeed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-blue-600 text-white py-10 text-center">
+        <h2 class="text-3xl font-bold">Get in Touch</h2>
+        <p class="mt-2">Have questions? Reach out to us and we'll be happy to help.</p>
+        <a href="{% url 'contact' %}" class="mt-4 inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100">Contact Us</a>
+    </section>
+
+
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-10">
+        <p>&copy; 2025 Excel Home Tuition. All rights reserved.</p>
+        <p>Email: <a href="mailto:info@excelhometuition.com" class="underline">info@excelhometuition.com</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("hidden");
+        }
+    </script>
+</body>
+</html>

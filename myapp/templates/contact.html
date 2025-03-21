@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Excel Home Tuition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .footer { 
+        background: #2B6CB0; 
+        color: white; 
+        text-align: center; 
+        padding: 20px; 
+        margin-top: 20px; 
+    }
+    body {
+        background-color: #f7fafc; /* Tailwind's bg-gray-100 equivalent */
+    }
+    </style>
+    
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 text-white flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-3">
+            <img src="{% static 'images/excelhm.jpg' %}" alt="Logo" class="w-10 h-10 rounded-full"> <!-- Logo -->
+            <h1 class="text-2xl font-bold">Excel Home Tuition</h1>
+        </div>
+        <ul class="flex space-x-6">
+            <li><a href="{% url 'home' %}" class="hover:underline">Home</a></li> <!-- Home Link -->
+            <li><a href="{% url 'about' %}" class="hover:underline">About</a></li> <!-- About Link -->
+        </ul>
+    </nav>
+    
+    <!-- Contact Section -->
+    <section class="flex justify-center mt-10">
+        <div class="bg-white p-6 rounded-lg shadow-md w-96">
+            <h2 class="text-3xl font-bold mb-4 text-center">Contact Us</h2>
+            <p class="text-center text-lg mb-6 text-gray-700">Feel free to get in touch with us. We are here to assist you!</p>
+
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-semibold text-xl">Email:</h3>
+                    <p class="text-blue-600">excelinstitute56@gmail.com</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-xl">Phone Number:</h3>
+                    <p class="text-blue-600">9540910526</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-xl">Address:</h3>
+                    <p class="text-gray-700">Excel Home Tuition Institute<br>Sangam Vihar, South Delhi, Delhi, India</p>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-xl">Working Hours:</h3>
+                    <p class="text-gray-700">Monday to Sunday: 9 AM - 6 PM</p>
+                    
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <footer class="footer">
+        <p>&copy; 2025 Excel Home Tuition. All rights reserved.</p>
+        <p>Contact: <a href="mailto:excelinstitute56@gmail.com.com" class="underline">info@excelhometuition.com</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("hidden");
+        }
+    </script>
+
+</body>
+</html>

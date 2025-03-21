@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 min-h-screen flex items-center justify-center p-6 relative">
+
+    <!-- Home Button -->
+    <a href="{% url 'home' %}" class="absolute top-4 right-6 bg-white text-purple-600 font-semibold px-5 py-2 rounded-lg shadow-md hover:bg-purple-600 hover:text-white transition">
+        🏠 Home
+    </a>
+
+    <section class="container mx-auto p-6 max-w-3xl bg-white shadow-lg rounded-2xl">
+        <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-6">✨ Feedback & Comments ✨</h2>
+    
+        <!-- Feedback Form -->
+        <form method="POST" class="bg-gradient-to-br from-white to-gray-100 p-6 rounded-xl shadow-lg border border-gray-300">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block font-semibold text-gray-800">Your Name</label>
+                <input type="text" name="name" class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-4 focus:ring-purple-500 transition" required>
+            </div>
+    
+            <div class="mb-4">
+                <label class="block font-semibold text-gray-800">Your Email</label>
+                <input type="email" name="email" class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-4 focus:ring-pink-500 transition" required>
+            </div>
+    
+            <div class="mb-4">
+                <label class="block font-semibold text-gray-800">Your Feedback</label>
+                <textarea name="comment" class="w-full p-3 mt-1 border border-gray-300 rounded-md h-28 focus:outline-none focus:ring-4 focus:ring-red-500 transition" required></textarea>
+            </div>
+    
+            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                🚀 Submit Feedback
+            </button>
+        </form>
+
+        <!-- Display Feedback -->
+        <div class="mt-10">
+            <h3 class="text-3xl font-bold text-gray-900 mb-4">📢 User Feedback</h3>
+            {% for feedback in feedbacks %}
+                <div class="bg-white p-5 rounded-xl shadow-lg border border-gray-200 mb-4 hover:shadow-xl transition">
+                    <h4 class="font-semibold text-purple-700 text-lg">👤 {{ feedback.name }}</h4>
+                    <p class="text-gray-700 mt-2">💬 {{ feedback.comment }}</p>
+                    <small class="text-gray-500 block mt-2">🕒 {{ feedback.created_at }}</small>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Excel Home Tuition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    .footer { 
+        background: #2B6CB0; 
+        color: white; 
+        text-align: center; 
+        padding: 20px; 
+        margin-top: 20px; 
+    }
+    body {
+        background-color: #f7fafc; /* Tailwind's bg-gray-100 equivalent */
+    }
+    </style>
+    
+
+    
+    <!-- Navbar -->
+    <nav class="bg-blue-600 p-4 text-white flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-3">
+            <img src="{% static 'images/excelhm.jpg' %}" alt="Logo" class="w-10 h-10 rounded-full"> 
+            <h1 class="text-2xl font-bold">Excel Home Tuition</h1>
+        </div>
+        <ul class="flex space-x-6">
+            <li><a href="{% url 'home' %}" class="hover:underline">Home</a></li>
+            <li><a href="{% url 'contact' %}" class="hover:underline">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- About Section -->
+    <section class="max-w-3xl mx-auto mt-10 bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-3xl font-bold text-center mb-4">About Excel Home Tuition</h2>
+        <p class="text-gray-700 text-lg">Welcome to Excel Home Tuition! We are a dedicated platform connecting students with experienced and qualified tutors for personalized learning. Our goal is to make quality education accessible to every student through expert guidance and flexible learning options.</p>
+        
+        <h3 class="text-2xl font-semibold mt-6">Our Mission</h3>
+        <p class="text-gray-700">At Excel Home Tuition, we believe that every student deserves the best education. Our mission is to provide high-quality home tuition services that help students improve their academic performance and achieve their goals.</p>
+        
+        <h3 class="text-2xl font-semibold mt-6">Why Choose Us?</h3>
+        <ul class="text-gray-700 list-disc pl-6">
+            <li><b>✅ Experienced & Verified Tutors</b> – Learn from professionals with proven expertise.</li>
+            <li><b>✅ Personalized Learning</b> – One-on-one sessions tailored to individual learning needs.</li>
+            <li><b>✅ Flexible Timing</b> – Choose a schedule that works best for you.</li>
+            <li><b>✅ Affordable Fees</b> – Quality education at a reasonable cost.</li>
+        </ul>
+        
+        <h3 class="text-2xl font-semibold mt-6">Who Can Join?</h3>
+        <ul class="text-gray-700 list-disc pl-6">
+            <li><b>✔️ Students</b> – Get expert guidance in subjects you need help with.</li>
+            <li><b>✔️ Teachers</b> – Join us to share your knowledge and earn through tutoring.</li>
+        </ul>
+        
+        <p class="text-gray-700 mt-6">At Excel Home Tuition, we are committed to bridging the gap between students and skilled educators, making learning easy and effective.</p>
+        
+        <p class="text-gray-700 font-semibold mt-4 text-center">If you have any queries, feel free to <a href="{% url 'contact' %}" class="text-blue-600 hover:underline">contact us</a>! 😊</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Excel Home Tuition. All rights reserved.</p>
+        <p>Contact: <a href="mailto:excelinstitute56@gmail.com.com" class="underline">info@excelhometuition.com</a></p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector(".nav-links").classList.toggle("hidden");
+        }
+    </script>
+
+    
+</body>
+</html>
